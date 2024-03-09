@@ -6,9 +6,9 @@
             </div>
             <div class="hidden md:block self-center">
                 <div class="ml-10 flex space-x-4">
-                    <a href="{{route('welcome')}}" wire:navigate class="@if(request()->routeIs('welcome')) bg-gray-900 text-white @else text-gray-300 @endif hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Início</a>
                     @if(auth()->user()->type == 'manager')
                     <a href="{{route('dashboard')}}" wire:navigate class="@if(request()->routeIs('dashboard')) bg-gray-900 text-white @else text-gray-300 @endif hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
+                    <a href="{{route('sales')}}" wire:navigate class="@if(request()->routeIs('sales')) bg-gray-900 text-white @else text-gray-300 @endif hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Vendas</a>
                     @else
                     <a href="{{route('point-of-sale')}}" wire:navigate class="@if(request()->routeIs('point-of-sale')) bg-gray-900 text-white @else text-gray-300 @endif hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Ponto de Venda</a>
                     @endif
@@ -26,7 +26,7 @@
                         </div>
                         <div x-show="menu" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             @if(auth()->user()->type == 'manager')
-                            <a href="" wire:navigate class="@if(request()->routeIs('perfil*')) text-gray-700 bg-gray-200 @else text-gray-300 @endif block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Perfil</a>
+                            <a href="{{route('profile')}}" wire:navigate class="@if(request()->routeIs('profile')) text-gray-700 bg-gray-200 @else text-gray-300 @endif block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Perfil</a>
                             @else
                             @endif
                             <a href="javascript:void(0)" wire:click="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-3">Sair</a>
