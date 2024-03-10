@@ -2,12 +2,15 @@
 
 use App\Http\Controllers\FallbackController;
 use App\Http\Middleware\Authenticate;
+use App\Livewire\CreateUser;
 use App\Livewire\Dashboard;
 use App\Livewire\Login;
 use App\Livewire\PointOfSale;
 use App\Livewire\Profile;
 use App\Livewire\Sales;
 use App\Livewire\ShowSale;
+use App\Livewire\UpdateUser;
+use App\Livewire\Users;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +32,7 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('/vendas/{sale}', ShowSale::class)->name('show-sale');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/perfil', Profile::class)->name('profile');
+    Route::get('/usuarios', Users::class)->name('users');
+    Route::get('/usuarios/{user}', UpdateUser::class)->name('update-user');
+    Route::get('/usuario', CreateUser::class)->name('create-user');
 });

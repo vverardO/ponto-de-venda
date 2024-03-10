@@ -5,11 +5,9 @@ namespace App\Livewire;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Perfil')]
-class Profile extends Component
+class UpdateUser extends Component
 {
     public User $user;
 
@@ -25,9 +23,9 @@ class Profile extends Component
 
     public string $type;
 
-    public function mount()
+    public function mount(User $user)
     {
-        $this->user = auth()->user();
+        $this->user = $user;
 
         $this->name = $this->user->name;
         $this->email = $this->user->email;
@@ -38,7 +36,10 @@ class Profile extends Component
 
     public function render()
     {
-        return view('livewire.profile');
+        $title = "Usuário - {$this->user->name} - {$this->user->email}";
+
+        return view('livewire.update-user')
+            ->title($title);
     }
 
     public function store()
@@ -52,6 +53,7 @@ class Profile extends Component
         $this->user->name = $this->name;
         $this->user->email = $this->email;
         $this->user->phone = $this->phone;
+        $this->user->type = $this->type;
         $this->user->registration_physical_person = $this->registration_physical_person;
 
         $this->user->save();
@@ -72,10 +74,24 @@ class Profile extends Component
             'phone' => [
                 'required',
             ],
+            'type' => [
+                'required',
+            ],
             'registration_physical_person' => [
                 'required',
                 Rule::unique('users')->ignore($this->user),
             ],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Qual o nome?',
+            'phone.required' => 'Qual o telefone?',
+            'registration_physical_person.required' => 'Qual o cpf?',
+            'registration_physical_person.unique' => 'CPF já existente na base, verifique.',
+            'type.required' => 'Selecione o acesso',
         ];
     }
 }

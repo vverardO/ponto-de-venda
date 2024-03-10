@@ -11,7 +11,7 @@ class Sales extends Component
 {
     public function render()
     {
-        $sales = Sale::all();
+        $sales = Sale::orderByDesc('id')->get();
 
         return view('livewire.sales')
             ->with('sales', $sales);
