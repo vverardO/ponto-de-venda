@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
-class UpdateUser extends Component
+class UserUpdate extends Component
 {
     public User $user;
 
@@ -58,11 +58,10 @@ class UpdateUser extends Component
 
         $this->user->save();
 
-        $this->dispatch(
-            'alert',
-            type: 'success',
-            message: 'Perfil atualizado com sucesso!'
-        );
+        session()->flash('message', 'Usuário atualizado com sucesso!');
+        session()->flash('type', 'success');
+
+        return redirect()->route('users');
     }
 
     public function rules()

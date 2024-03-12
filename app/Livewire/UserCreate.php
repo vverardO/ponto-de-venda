@@ -9,7 +9,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Title('Novo usuário')]
-class CreateUser extends Component
+class UserCreate extends Component
 {
     public User $user;
 
@@ -48,11 +48,10 @@ class CreateUser extends Component
 
         $this->user->save();
 
-        session()->flash('message', 'Perfil criado com sucesso!');
+        session()->flash('message', 'Usuário criado com sucesso!');
         session()->flash('type', 'success');
 
         return redirect()->route('users');
-
     }
 
     public function rules()
