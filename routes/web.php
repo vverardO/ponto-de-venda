@@ -6,6 +6,9 @@ use App\Livewire\CreateUser;
 use App\Livewire\Dashboard;
 use App\Livewire\Login;
 use App\Livewire\PointOfSale;
+use App\Livewire\ProductCreate;
+use App\Livewire\Products;
+use App\Livewire\ProductUpdate;
 use App\Livewire\Profile;
 use App\Livewire\Sales;
 use App\Livewire\ShowSale;
@@ -35,4 +38,7 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('/usuarios', Users::class)->name('users');
     Route::get('/usuarios/{user}', UpdateUser::class)->name('update-user');
     Route::get('/usuario', CreateUser::class)->name('create-user');
+    Route::get('/produtos', Products::class)->name('products');
+    Route::get('/produtos/{product}', ProductUpdate::class)->name('product-update');
+    Route::get('/produto', ProductCreate::class)->name('product-create');
 });

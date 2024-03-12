@@ -9,6 +9,7 @@
                     @if(auth()->user()->type == 'manager')
                     <a href="{{route('dashboard')}}" wire:navigate class="@if(request()->routeIs('dashboard')) bg-gray-900 text-white @else text-gray-300 @endif hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
                     <a href="{{route('sales')}}" wire:navigate class="@if(request()->routeIs('sales')) bg-gray-900 text-white @else text-gray-300 @endif hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Vendas</a>
+                    <a href="{{route('products')}}" wire:navigate class="@if(request()->routeIs('products')) bg-gray-900 text-white @else text-gray-300 @endif hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Produtos</a>
                     <a href="{{route('users')}}" wire:navigate class="@if(request()->routeIs('users')) bg-gray-900 text-white @else text-gray-300 @endif hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Usuários</a>
                     @else
                     <a href="{{route('point-of-sale')}}" wire:navigate class="@if(request()->routeIs('point-of-sale')) bg-gray-900 text-white @else text-gray-300 @endif hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Ponto de Venda</a>
