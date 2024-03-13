@@ -9,7 +9,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => implode(' ', fake()->words(2)),
             'price' => rand(1, 9999),
             'image' => '/images/products/produto-'.rand(1, 9).'.png',
         ];
